@@ -1,9 +1,9 @@
-from cpu import Emulator
+from cpu import Emulator, Display
 import time
 import keyboard
 chip8 = Emulator()
-chip8.load_rom("67.ch8")
-
+chip8.load_rom("Space_Invaders.ch8")
+display = Display()
 
 print(f"Program Counter: {hex(chip8.pc)}")
 key_map = {
@@ -15,17 +15,20 @@ key_map = {
 last_timer_time = time.time()
 try:
     while True:
+        display.handle_events()
+
         for key_char, key_value in key_map.items():
-            if keyboard.is_pressed(key_char):
-                chip8.keys[key_value] = 1
-            else:
-                chip8.keys[key_value] = 0
+            chip8.keys[key_value] = 1 if keyboard.is_pressed(key_char) else 0
         chip8.cycle()
+        if chip8.drawFlag:
+            display.draw(chip8.display)
+            chip8.drawFlag = False
         current_time = time.time()
         if current_time - last_timer_time >= 1/60:
             chip8.update_timers()
             last_timer_time = current_time
-        time.sleep(0.001)
+        print(chip8.pc)
+        time.sleep(1)
 
 except KeyboardInterrupt:
     print("\n Emulation stopped")
