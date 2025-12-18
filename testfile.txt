@@ -1,0 +1,6 @@
+CLS
+JP 0x21A
+JP V0, 0x412
+SE V0, V1
+RET
+CLS
