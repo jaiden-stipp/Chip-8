@@ -4,18 +4,16 @@ What is Chip-8?
 
 Chip 8 CPU Specifications:
 ----------------------------
-4096 bytes of adressable memory
-Sixteen 8-bit registers (v0-vF)
-- vF register commonly used for storing carry values
-16-bit index register
-64 byte stack
-8-bit stack pointer
-8-bit delay timer
-8-bit sound timer
-64x32 bit frame buffer (display)
+- 4096 bytes of adressable memory
+- Sixteen 8-bit registers (v0-vF) (vF register commonly used for storing carry values)
+- 16-bit index register
+- 64 byte stack
+- 8-bit stack pointer
+- 8-bit delay timer
+- 8-bit sound timer
+- 64x32 bit frame buffer (display)
 - Frame buffer is a (x,y) adressable array that tells the display whether a pixel is on or off.
-
-16-bit program counter
+- 16-bit program counter
 
 
 Chip-8 Op Codes / Instruction Set
@@ -40,7 +38,7 @@ Chip-8 Op Codes / Instruction Set
 
 7xkk - Set Vx = Vx + kk
 
-# Instruction class 8, put under same elif statement
+### Instruction class 8, put under same elif statement
 8xy0 - Stores value of Vy into Vx
 
 8xy1 - Set *Vx* to Vx OR Vy
@@ -69,7 +67,10 @@ Cxkk - Set Vx = random byte & kk
 
 Dxyn - Display n-byte sprite starting at I (index register) at (Vx, Vy). Vf = collision
 
-# Keyboard instructions
+### Keyboard instructions
 Ex9E - Skips next instruction if key with value of Vx is pressed
 
 ExA1 - Skips next instruction if key with value of Vx is not pressed
+
+-- Project by Jaiden Stipp created with Cowgod's Chip-8 Technical Reference
+-- Special thanks to the github repos that provided the test ROM files to run 
