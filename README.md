@@ -40,7 +40,6 @@ Chip-8 Op Codes / Instruction Set
 
 7xkk - Set Vx = Vx + kk
 
-### Instruction class 8, put under same elif statement
 8xy0 - Stores value of Vy into Vx
 
 8xy1 - Set *Vx* to Vx OR Vy
