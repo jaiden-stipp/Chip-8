@@ -1,8 +1,28 @@
 from cpu import Emulator, Display
 import time
 import keyboard
+
 chip8 = Emulator()
-chip8.load_rom("Space_Invaders.ch8")
+options = [
+    "./chip8-roms/demos/IBM_Logo.ch8", 
+    "./chip8-roms/games/Space_Invaders.ch8", 
+    "./chip8-roms/games/Tron.ch8", 
+    "./chip8-roms/demos/Maze [David Winter, 199x].ch8", 
+    "./chip8-roms/games/Pong.ch8"
+]
+
+print("Emulator Options:\n1. IBM logo\n2. Space Invaders\n3. Tron\n4. Maze\n5. Pong")
+
+try:
+    user_input = int(input("Enter the number associated with the demo you want to try: "))
+    
+    if user_input < 1 or user_input > 5:
+        print("Invalid option.")
+        exit() 
+    
+    chip8.load_rom(options[user_input - 1])
+except ValueError:
+    print("Please enter a valid number.")
 display = Display()
 
 print(f"Program Counter: {hex(chip8.pc)}")
@@ -28,7 +48,7 @@ try:
             chip8.update_timers()
             last_timer_time = current_time
         print(chip8.pc)
-        time.sleep(1)
+        time.sleep(1/500)
 
 except KeyboardInterrupt:
     print("\n Emulation stopped")

@@ -1,6 +1,8 @@
+![Project Screenshot](/img/Screenshot_9.png)
+
 What is Chip-8?
 ---------------
-
+Chip-8 is an interpreted programming language, originally used on 8-bit microcomputers in the mid-1970s like the COSMAC VIP and TELMAC 1800. 
 
 Chip 8 CPU Specifications:
 ----------------------------
@@ -20,9 +22,9 @@ Chip-8 Op Codes / Instruction Set
 ----------------
 0nnn - Jumps to routine at nnn (not implemented because modern interpreter)
 
-00E0 - Clear display
+00E0 / CLS - Clear display
 
-00EE - Returns from routine. Sets program counter to address at the top of the stack and then subtracts 1
+00EE / RET - Returns from routine. Sets program counter to address at the top of the stack and then subtracts 1
 
 1nnn - Jumps to location nnn. Also sets program counter to nnn
 
@@ -71,6 +73,26 @@ Dxyn - Display n-byte sprite starting at I (index register) at (Vx, Vy). Vf = co
 Ex9E - Skips next instruction if key with value of Vx is pressed
 
 ExA1 - Skips next instruction if key with value of Vx is not pressed
+
+### Timer, Sound, & Memory Instructions
+Fx07 - Set Vx = delay timer value
+
+Fx0A - Wait for a key press, store the value of the key in Vx. (Blocking operation, all execution stops until key press)
+
+Fx15 - Set delay timer = Vx
+
+Fx18 - Set sound timer = Vx
+
+Fx1E - Set I = I + Vx
+
+Fx29 - Set I = location of sprite for digit Vx
+
+Fx33 - Store BCD representation of Vx in memory locations I, I+1, and I+2
+
+Fx55 - Store registers V0 through Vx in memory starting at location I
+
+Fx65 - Read registers V0 through Vx from memory starting at location I
+
 
 -- Project by Jaiden Stipp created with Cowgod's Chip-8 Technical Reference
 -- Special thanks to the github repos that provided the test ROM files to run 
