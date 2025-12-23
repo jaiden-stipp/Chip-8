@@ -30,7 +30,7 @@ Chip-8 Op Codes / Instruction Set
 
 2nnn - Calls routine at nnn. Interpreter icrements the stack pointer and sets current stack pointer on top of stack
 
-3xkk - Skip next instruction if Vx = nn. Compares register Vx to nn and if are equal, increment pc by 2
+3xkk - Skip next instruction if Vx = kk. Compares register Vx to kk and if are equal, increment pc by 2
 
 4xkk - Skip next instruction if Vx != kk. Compares register Vx to kk and if they are not equal, increments pc by 2
 
